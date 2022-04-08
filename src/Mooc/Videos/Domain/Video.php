@@ -30,7 +30,11 @@ final class Video extends AggregateRoot
 
         $video->record(
             new VideoCreatedDomainEvent(
-                $id->value(), $type->value(), $title->value(), $url->value(), $courseId->value()
+                $id->value(),
+                $type->value(),
+                $title->value(),
+                $url->value(),
+                $courseId->value()
             )
         );
 

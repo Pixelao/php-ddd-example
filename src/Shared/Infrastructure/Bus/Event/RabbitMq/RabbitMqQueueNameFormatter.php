@@ -48,6 +48,6 @@ final class RabbitMqQueueNameFormatter
 
     private static function toSnakeCase(): callable
     {
-        return static fn(string $text) => Utils::toSnakeCase($text);
+        return static fn (string $text) => Utils::toSnakeCase($text);
     }
 }

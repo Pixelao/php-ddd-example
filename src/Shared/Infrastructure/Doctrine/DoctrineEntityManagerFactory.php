@@ -12,13 +12,13 @@ use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Driver\SimplifiedXmlDriver;
 use Doctrine\ORM\Tools\Setup;
-use RuntimeException;
 use function Lambdish\Phunctional\dissoc;
+use RuntimeException;
 
 final class DoctrineEntityManagerFactory
 {
     private static array $sharedPrefixes = [
-        __DIR__ . '/../../../Shared/Infrastructure/Persistence/Mappings' => 'CodelyTv\Shared\Domain',
+        __DIR__.'/../../../Shared/Infrastructure/Persistence/Mappings' => 'CodelyTv\Shared\Domain',
     ];
 
     public static function create(
@@ -41,10 +41,10 @@ final class DoctrineEntityManagerFactory
     {
         self::ensureSchemaFileExists($schemaFile);
 
-        $databaseName                  = $parameters['dbname'];
+        $databaseName = $parameters['dbname'];
         $parametersWithoutDatabaseName = dissoc($parameters, 'dbname');
-        $connection                    = DriverManager::getConnection($parametersWithoutDatabaseName);
-        $schemaManager                 = new MySqlSchemaManager($connection);
+        $connection = DriverManager::getConnection($parametersWithoutDatabaseName);
+        $schemaManager = new MySqlSchemaManager($connection);
 
         if (!self::databaseExists($databaseName, $schemaManager)) {
             $schemaManager->createDatabase($databaseName);

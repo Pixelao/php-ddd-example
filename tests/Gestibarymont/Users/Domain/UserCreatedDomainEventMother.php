@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Gestibarymont\Users\Domain;
 
+use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Gestibarymont\Users\Domain\User;
 use CodelyTv\Gestibarymont\Users\Domain\UserCreatedDomainEvent;
-use CodelyTv\Gestibarymont\Users\Domain\UserPassword;
 use CodelyTv\Gestibarymont\Users\Domain\UserName;
-use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
+use CodelyTv\Gestibarymont\Users\Domain\UserPassword;
 
 final class UserCreatedDomainEventMother
 {

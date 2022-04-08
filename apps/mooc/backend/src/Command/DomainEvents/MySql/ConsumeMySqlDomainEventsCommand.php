@@ -8,11 +8,11 @@ use CodelyTv\Shared\Domain\Bus\Event\DomainEvent;
 use CodelyTv\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator;
 use CodelyTv\Shared\Infrastructure\Bus\Event\MySql\MySqlDoctrineDomainEventsConsumer;
 use CodelyTv\Shared\Infrastructure\Doctrine\DatabaseConnections;
+use function Lambdish\Phunctional\pipe;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use function Lambdish\Phunctional\pipe;
 
 final class ConsumeMySqlDomainEventsCommand extends Command
 {
@@ -37,7 +37,7 @@ final class ConsumeMySqlDomainEventsCommand extends Command
     {
         $quantityEventsToProcess = (int) $input->getArgument('quantity');
 
-        $consumer = pipe($this->consumer(), fn() => $this->connections->clear());
+        $consumer = pipe($this->consumer(), fn () => $this->connections->clear());
 
         $this->consumer->consume($consumer, $quantityEventsToProcess);
 

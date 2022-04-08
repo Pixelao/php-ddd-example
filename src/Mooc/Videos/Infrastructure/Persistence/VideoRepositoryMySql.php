@@ -35,7 +35,7 @@ final class VideoRepositoryMySql extends DoctrineRepository implements VideoRepo
     public function searchByCriteria(Criteria $criteria): Videos
     {
         $doctrineCriteria = DoctrineCriteriaConverter::convert($criteria, self::$criteriaToDoctrineFields);
-        $videos           = $this->repository(Video::class)->matching($doctrineCriteria)->toArray();
+        $videos = $this->repository(Video::class)->matching($doctrineCriteria)->toArray();
 
         return new Videos($videos);
     }

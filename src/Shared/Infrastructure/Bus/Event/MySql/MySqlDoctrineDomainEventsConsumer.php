@@ -10,9 +10,9 @@ use DateTimeImmutable;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\FetchMode;
 use Doctrine\ORM\EntityManager;
-use RuntimeException;
 use function Lambdish\Phunctional\each;
 use function Lambdish\Phunctional\map;
+use RuntimeException;
 
 final class MySqlDoctrineDomainEventsConsumer
 {
@@ -43,7 +43,7 @@ final class MySqlDoctrineDomainEventsConsumer
         return function (array $rawEvent) use ($subscribers): void {
             try {
                 $domainEventClass = $this->eventMapping->for($rawEvent['name']);
-                $domainEvent      = $domainEventClass::fromPrimitives(
+                $domainEvent = $domainEventClass::fromPrimitives(
                     $rawEvent['aggregate_id'],
                     Utils::jsonDecode($rawEvent['body']),
                     $rawEvent['id'],
@@ -63,6 +63,6 @@ final class MySqlDoctrineDomainEventsConsumer
 
     private function idExtractor(): callable
     {
-        return static fn(array $event): string => "'${event['id']}'";
+        return static fn (array $event): string => "'${event['id']}'";
     }
 }

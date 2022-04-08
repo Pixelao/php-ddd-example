@@ -68,7 +68,7 @@ abstract class WebController extends ApiController
     private function addFlashFor(string $prefix, array $messages): void
     {
         foreach ($messages as $key => $message) {
-            $this->session->getFlashBag()->set($prefix . '.' . $key, $message);
+            $this->session->getFlashBag()->set($prefix.'.'.$key, $message);
         }
     }
 }

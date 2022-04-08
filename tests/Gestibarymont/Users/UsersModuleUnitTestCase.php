@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Gestibarymont\Users;
 
+use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Gestibarymont\Users\Domain\User;
 use CodelyTv\Gestibarymont\Users\Domain\UserRepository;
-use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\UnitTestCase;
 use Mockery\MockInterface;
 

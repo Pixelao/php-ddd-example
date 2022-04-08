@@ -7,9 +7,9 @@ namespace CodelyTv\Shared\Infrastructure\Bus\Event;
 use CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber;
 use CodelyTv\Shared\Infrastructure\Bus\CallableFirstParameterExtractor;
 use CodelyTv\Shared\Infrastructure\Bus\Event\RabbitMq\RabbitMqQueueNameFormatter;
+use function Lambdish\Phunctional\search;
 use RuntimeException;
 use Traversable;
-use function Lambdish\Phunctional\search;
 
 final class DomainEventSubscriberLocator
 {
@@ -30,7 +30,7 @@ final class DomainEventSubscriberLocator
     public function withRabbitMqQueueNamed(string $queueName): DomainEventSubscriber|callable
     {
         $subscriber = search(
-            static fn(DomainEventSubscriber $subscriber) => RabbitMqQueueNameFormatter::format($subscriber) ===
+            static fn (DomainEventSubscriber $subscriber) => RabbitMqQueueNameFormatter::format($subscriber) ===
                                                             $queueName,
             $this->mapping
         );

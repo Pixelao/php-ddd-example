@@ -7,17 +7,17 @@ namespace CodelyTv\Apps\Mooc\Backend\Command\DomainEvents\RabbitMq;
 use CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber;
 use CodelyTv\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator;
 use CodelyTv\Shared\Infrastructure\Bus\Event\RabbitMq\RabbitMqQueueNameFormatter;
+use function Lambdish\Phunctional\each;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use function Lambdish\Phunctional\each;
 
 final class GenerateSupervisorRabbitMqConsumerFilesCommand extends Command
 {
-    private const EVENTS_TO_PROCESS_AT_TIME           = 200;
+    private const EVENTS_TO_PROCESS_AT_TIME = 200;
     private const NUMBERS_OF_PROCESSES_PER_SUBSCRIBER = 1;
-    private const SUPERVISOR_PATH                     = __DIR__ . '/../../../../build/supervisor';
+    private const SUPERVISOR_PATH = __DIR__.'/../../../../build/supervisor';
     protected static $defaultName = 'codelytv:domain-events:rabbitmq:generate-supervisor-files';
 
     public function __construct(private DomainEventSubscriberLocator $locator)
@@ -44,7 +44,7 @@ final class GenerateSupervisorRabbitMqConsumerFilesCommand extends Command
     private function configCreator(string $path): callable
     {
         return function (DomainEventSubscriber $subscriber) use ($path) {
-            $queueName      = RabbitMqQueueNameFormatter::format($subscriber);
+            $queueName = RabbitMqQueueNameFormatter::format($subscriber);
             $subscriberName = RabbitMqQueueNameFormatter::shortFormat($subscriber);
 
             $fileContent = str_replace(
@@ -71,7 +71,7 @@ final class GenerateSupervisorRabbitMqConsumerFilesCommand extends Command
 
     private function template(): string
     {
-        return <<<EOF
+        return <<<'EOF'
 [program:codelytv_{queue_name}]
 command      = {path}/apps/mooc/backend/bin/console codelytv:domain-events:rabbitmq:consume --env=prod {queue_name} {events_to_process}
 process_name = %(program_name)s_%(process_num)02d

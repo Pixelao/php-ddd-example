@@ -6,10 +6,10 @@ namespace CodelyTv\Tests\Gestibarymont\Users\Application\Update;
 
 use CodelyTv\Gestibarymont\Users\Application\Update\UserRenamer;
 use CodelyTv\Gestibarymont\Users\Domain\UserNotExist;
-use CodelyTv\Tests\Gestibarymont\Users\UsersModuleUnitTestCase;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserIdMother;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserMother;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserNameMother;
+use CodelyTv\Tests\Gestibarymont\Users\UsersModuleUnitTestCase;
 use CodelyTv\Tests\Shared\Domain\DuplicatorMother;
 
 final class UserRenamerTest extends UsersModuleUnitTestCase
@@ -26,8 +26,8 @@ final class UserRenamerTest extends UsersModuleUnitTestCase
     /** @test */
     public function it_should_rename_an_existing_user(): void
     {
-        $user        = UserMother::create();
-        $newName     = UserNameMother::create();
+        $user = UserMother::create();
+        $newName = UserNameMother::create();
         $renamedUser = DuplicatorMother::with($user, ['name' => $newName]);
 
         $this->shouldSearch($user->id(), $user);

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Shared\Domain;
 
+use function Lambdish\Phunctional\each;
 use ReflectionObject;
 use ReflectionProperty;
-use function Lambdish\Phunctional\each;
 
 final class DuplicatorMother
 {

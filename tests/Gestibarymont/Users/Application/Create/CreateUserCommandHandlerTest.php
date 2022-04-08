@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Gestibarymont\Users\Application\Create;
 
-use CodelyTv\Gestibarymont\Users\Application\Create\UserCreator;
 use CodelyTv\Gestibarymont\Users\Application\Create\CreateUserCommandHandler;
-use CodelyTv\Tests\Gestibarymont\Users\UsersModuleUnitTestCase;
+use CodelyTv\Gestibarymont\Users\Application\Create\UserCreator;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserCreatedDomainEventMother;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserMother;
+use CodelyTv\Tests\Gestibarymont\Users\UsersModuleUnitTestCase;
 
 final class CreateUserCommandHandlerTest extends UsersModuleUnitTestCase
 {
@@ -26,7 +26,7 @@ final class CreateUserCommandHandlerTest extends UsersModuleUnitTestCase
     {
         $command = CreateUserCommandMother::create();
 
-        $user      = UserMother::fromRequest($command);
+        $user = UserMother::fromRequest($command);
         $domainEvent = UserCreatedDomainEventMother::fromUser($user);
 
         $this->shouldSave($user);

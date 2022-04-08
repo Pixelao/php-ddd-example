@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace CodelyTv\Shared\Domain\ValueObject;
 
 use CodelyTv\Shared\Domain\Utils;
-use ReflectionClass;
-use Stringable;
 use function in_array;
 use function Lambdish\Phunctional\reindex;
+use ReflectionClass;
+use Stringable;
 
 abstract class Enum implements Stringable
 {
@@ -36,7 +36,7 @@ abstract class Enum implements Stringable
         $class = static::class;
 
         if (!isset(self::$cache[$class])) {
-            $reflected           = new ReflectionClass($class);
+            $reflected = new ReflectionClass($class);
             self::$cache[$class] = reindex(self::keysFormatter(), $reflected->getConstants());
         }
 
@@ -55,7 +55,7 @@ abstract class Enum implements Stringable
 
     private static function keysFormatter(): callable
     {
-        return static fn($unused, string $key): string => Utils::toCamelCase(strtolower($key));
+        return static fn ($unused, string $key): string => Utils::toCamelCase(strtolower($key));
     }
 
     public function value()

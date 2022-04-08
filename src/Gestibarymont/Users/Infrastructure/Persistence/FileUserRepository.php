@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace CodelyTv\Gestibarymont\Users\Infrastructure\Persistence;
 
+use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Gestibarymont\Users\Domain\User;
 use CodelyTv\Gestibarymont\Users\Domain\UserRepository;
-use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 
 final class FileUserRepository implements UserRepository
 {
-    private const FILE_PATH = __DIR__ . '/users';
+    private const FILE_PATH = __DIR__.'/users';
 
     public function save(User $user): void
     {

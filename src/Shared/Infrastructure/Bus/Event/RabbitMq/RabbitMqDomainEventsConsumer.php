@@ -8,9 +8,9 @@ use AMQPEnvelope;
 use AMQPQueue;
 use AMQPQueueException;
 use CodelyTv\Shared\Infrastructure\Bus\Event\DomainEventJsonDeserializer;
-use Throwable;
 use function Lambdish\Phunctional\assoc;
 use function Lambdish\Phunctional\get;
+use Throwable;
 
 final class RabbitMqDomainEventsConsumer
 {
@@ -25,10 +25,10 @@ final class RabbitMqDomainEventsConsumer
         string $exchangeName,
         int $maxRetries
     ) {
-        $this->connection   = $connection;
+        $this->connection = $connection;
         $this->deserializer = $deserializer;
         $this->exchangeName = $exchangeName;
-        $this->maxRetries   = $maxRetries;
+        $this->maxRetries = $maxRetries;
     }
 
     public function consume(callable $subscriber, string $queueName): void

@@ -10,18 +10,18 @@ use Exception;
 
 final class ElasticQueryGenerator
 {
-    private const MUST_TYPE     = 'must';
+    private const MUST_TYPE = 'must';
     private const MUST_NOT_TYPE = 'must_not';
-    private const TERM_TERM     = 'term';
-    private const TERM_RANGE    = 'range';
+    private const TERM_TERM = 'term';
+    private const TERM_RANGE = 'range';
     private const TERM_WILDCARD = 'wildcard';
 
     private static array $mustNotFields = [FilterOperator::NOT_EQUAL, FilterOperator::NOT_CONTAINS];
 
     public function __invoke(array $query, Filter $filter): array
     {
-        $type          = $this->typeFor($filter->operator());
-        $termLevel     = $this->termLevelFor($filter->operator());
+        $type = $this->typeFor($filter->operator());
+        $termLevel = $this->termLevelFor($filter->operator());
         $valueTemplate = $filter->operator()->isContaining() ? '*%s*' : '%s';
 
         return array_merge_recursive(

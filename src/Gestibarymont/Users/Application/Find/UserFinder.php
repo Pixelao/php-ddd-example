@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace CodelyTv\Gestibarymont\Users\Application\Find;
 
+use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Gestibarymont\Users\Domain\User;
 use CodelyTv\Gestibarymont\Users\Domain\UserNotExist;
 use CodelyTv\Gestibarymont\Users\Domain\UserRepository;
-use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 
 final class UserFinder
 {

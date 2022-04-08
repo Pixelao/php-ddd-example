@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace CodelyTv\Shared\Infrastructure\Symfony;
 
 use InvalidArgumentException;
+use function Lambdish\Phunctional\get;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use function Lambdish\Phunctional\get;
 
 final class ApiExceptionsHttpStatusCodeMapping
 {

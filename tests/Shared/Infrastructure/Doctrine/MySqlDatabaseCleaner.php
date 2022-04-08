@@ -15,7 +15,7 @@ final class MySqlDatabaseCleaner
     {
         $connection = $entityManager->getConnection();
 
-        $tables            = $this->tables($connection);
+        $tables = $this->tables($connection);
         $truncateTablesSql = $this->truncateDatabaseSql($tables);
 
         $connection->exec($truncateTablesSql);
@@ -30,7 +30,7 @@ final class MySqlDatabaseCleaner
 
     private function truncateTableSql(): callable
     {
-        return fn(array $table): string => sprintf('TRUNCATE TABLE `%s`;', first($table));
+        return fn (array $table): string => sprintf('TRUNCATE TABLE `%s`;', first($table));
     }
 
     private function tables(Connection $connection): array

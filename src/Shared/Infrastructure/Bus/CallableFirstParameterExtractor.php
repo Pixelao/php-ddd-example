@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace CodelyTv\Shared\Infrastructure\Bus;
 
 use CodelyTv\Shared\Domain\Bus\Event\DomainEventSubscriber;
-use ReflectionClass;
-use ReflectionMethod;
 use function Lambdish\Phunctional\map;
 use function Lambdish\Phunctional\reduce;
 use function Lambdish\Phunctional\reindex;
+use ReflectionClass;
+use ReflectionMethod;
 
 final class CallableFirstParameterExtractor
 {
@@ -25,7 +25,7 @@ final class CallableFirstParameterExtractor
 
     private static function classExtractor(CallableFirstParameterExtractor $parameterExtractor): callable
     {
-        return static fn(callable $handler): ?string => $parameterExtractor->extract($handler);
+        return static fn (callable $handler): ?string => $parameterExtractor->extract($handler);
     }
 
     private static function pipedCallablesReducer(): callable
@@ -43,13 +43,13 @@ final class CallableFirstParameterExtractor
 
     private static function unflatten(): callable
     {
-        return static fn($value) => [$value];
+        return static fn ($value) => [$value];
     }
 
     public function extract($class): ?string
     {
         $reflector = new ReflectionClass($class);
-        $method    = $reflector->getMethod('__invoke');
+        $method = $reflector->getMethod('__invoke');
 
         if ($this->hasOnlyOneParameter($method)) {
             return $this->firstParameterClassFrom($method);

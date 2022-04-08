@@ -42,7 +42,7 @@ final class CoursesCounter extends AggregateRoot
 
     public function increment(CourseId $courseId): void
     {
-        $this->total             = $this->total->increment();
+        $this->total = $this->total->increment();
         $this->existingCourses[] = $courseId;
 
         $this->record(new CoursesCounterIncrementedDomainEvent($this->id()->value(), $this->total()->value()));
@@ -57,6 +57,6 @@ final class CoursesCounter extends AggregateRoot
 
     private function courseIdComparator(CourseId $courseId): callable
     {
-        return static fn(CourseId $other) => $courseId->equals($other);
+        return static fn (CourseId $other) => $courseId->equals($other);
     }
 }

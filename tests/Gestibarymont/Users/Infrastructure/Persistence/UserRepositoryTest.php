@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Gestibarymont\Users\Infrastructure\Persistence;
 
-use CodelyTv\Tests\Gestibarymont\Users\UsersModuleInfrastructureTestCase;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserIdMother;
 use CodelyTv\Tests\Gestibarymont\Users\Domain\UserMother;
+use CodelyTv\Tests\Gestibarymont\Users\UsersModuleInfrastructureTestCase;
 
 final class UserRepositoryTest extends UsersModuleInfrastructureTestCase
 {

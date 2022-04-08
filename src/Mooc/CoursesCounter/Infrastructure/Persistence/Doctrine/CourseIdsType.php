@@ -22,16 +22,16 @@ final class CourseIdsType extends JsonType implements DoctrineCustomType
         return self::customTypeName();
     }
 
-    /** @var CourseId[] $value */
+    /** @var CourseId[] */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
-        return parent::convertToDatabaseValue(map(fn(CourseId $id) => $id->value(), $value), $platform);
+        return parent::convertToDatabaseValue(map(fn (CourseId $id) => $id->value(), $value), $platform);
     }
 
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         $scalars = parent::convertToPHPValue($value, $platform);
 
-        return map(fn(string $value) => new CourseId($value), $scalars);
+        return map(fn (string $value) => new CourseId($value), $scalars);
     }
 }

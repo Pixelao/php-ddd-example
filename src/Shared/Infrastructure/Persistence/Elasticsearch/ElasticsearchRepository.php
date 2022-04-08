@@ -57,6 +57,6 @@ abstract class ElasticsearchRepository
 
     private function elasticValuesExtractor(): callable
     {
-        return static fn(array $elasticValues): array => $elasticValues['_source'];
+        return static fn (array $elasticValues): array => $elasticValues['_source'];
     }
 }

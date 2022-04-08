@@ -10,7 +10,7 @@ use CodelyTv\Mooc\Shared\Domain\Courses\CourseId;
 
 final class FileCourseRepository implements CourseRepository
 {
-    private const FILE_PATH = __DIR__ . '/courses';
+    private const FILE_PATH = __DIR__.'/courses';
 
     public function save(Course $course): void
     {

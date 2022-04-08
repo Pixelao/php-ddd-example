@@ -24,7 +24,7 @@ final class WithPrometheusMonitoringEventBus implements EventBus
             ['name']
         );
 
-        each(fn(DomainEvent $event) => $counter->inc(['name' => $event::eventName()]), $events);
+        each(fn (DomainEvent $event) => $counter->inc(['name' => $event::eventName()]), $events);
 
         $this->bus->publish(...$events);
     }

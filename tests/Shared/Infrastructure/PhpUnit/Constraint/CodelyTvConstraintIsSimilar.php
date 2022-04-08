@@ -10,11 +10,11 @@ use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\Comparator\DateTimeSimilarCompa
 use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\Comparator\DateTimeStringSimilarComparator;
 use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\Comparator\DomainEventArraySimilarComparator;
 use CodelyTv\Tests\Shared\Infrastructure\PhpUnit\Comparator\DomainEventSimilarComparator;
+use function is_string;
 use PHPUnit\Framework\Constraint\Constraint;
 use PHPUnit\Framework\ExpectationFailedException;
 use SebastianBergmann\Comparator\ComparisonFailure;
 use SebastianBergmann\Comparator\Factory;
-use function is_string;
 use function sprintf;
 
 // Based on \PHPUnit\Framework\Constraint\IsEqual
@@ -30,7 +30,7 @@ final class CodelyTvConstraintIsSimilar extends Constraint
             return true;
         }
 
-        $isValid           = true;
+        $isValid = true;
         $comparatorFactory = new Factory();
 
         $comparatorFactory->register(new AggregateRootArraySimilarComparator());
@@ -47,7 +47,7 @@ final class CodelyTvConstraintIsSimilar extends Constraint
         } catch (ComparisonFailure $f) {
             if (!$returnResult) {
                 throw new ExpectationFailedException(
-                    trim($description . "\n" . $f->getMessage()),
+                    trim($description."\n".$f->getMessage()),
                     $f
                 );
             }

@@ -16,4 +16,3 @@ final class CommandNotRegisteredError extends RuntimeException
         parent::__construct("The command <$commandClass> hasn't a command handler associated");
     }
 }
-

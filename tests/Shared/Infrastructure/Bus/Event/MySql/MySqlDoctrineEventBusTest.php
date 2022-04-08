@@ -23,7 +23,7 @@ final class MySqlDoctrineEventBusTest extends InfrastructureTestCase
     {
         parent::setUp();
 
-        $this->bus      = new MySqlDoctrineEventBus($this->service(EntityManager::class));
+        $this->bus = new MySqlDoctrineEventBus($this->service(EntityManager::class));
         $this->consumer = new MySqlDoctrineDomainEventsConsumer(
             $this->service(EntityManager::class),
             $this->service(DomainEventMapping::class)
@@ -33,13 +33,13 @@ final class MySqlDoctrineEventBusTest extends InfrastructureTestCase
     /** @test */
     public function it_should_publish_and_consume_domain_events_from_msql(): void
     {
-        $domainEvent        = CourseCreatedDomainEventMother::create();
+        $domainEvent = CourseCreatedDomainEventMother::create();
         $anotherDomainEvent = CoursesCounterIncrementedDomainEventMother::create();
 
         $this->bus->publish($domainEvent, $anotherDomainEvent);
 
         $this->consumer->consume(
-            fn(DomainEvent ...$expectedEvents) => $this->assertContainsEquals($domainEvent, $expectedEvents),
+            fn (DomainEvent ...$expectedEvents) => $this->assertContainsEquals($domainEvent, $expectedEvents),
             $eventsToConsume = 2
         );
     }

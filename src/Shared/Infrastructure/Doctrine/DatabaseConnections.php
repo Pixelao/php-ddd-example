@@ -21,7 +21,7 @@ final class DatabaseConnections
 
     public function clear(): void
     {
-        each(fn(EntityManager $entityManager) => $entityManager->clear(), $this->connections);
+        each(fn (EntityManager $entityManager) => $entityManager->clear(), $this->connections);
     }
 
     public function truncate(): void

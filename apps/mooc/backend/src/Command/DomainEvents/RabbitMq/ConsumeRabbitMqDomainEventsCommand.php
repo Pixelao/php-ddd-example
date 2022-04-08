@@ -7,11 +7,11 @@ namespace CodelyTv\Apps\Mooc\Backend\Command\DomainEvents\RabbitMq;
 use CodelyTv\Shared\Infrastructure\Bus\Event\DomainEventSubscriberLocator;
 use CodelyTv\Shared\Infrastructure\Bus\Event\RabbitMq\RabbitMqDomainEventsConsumer;
 use CodelyTv\Shared\Infrastructure\Doctrine\DatabaseConnections;
+use function Lambdish\Phunctional\repeat;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use function Lambdish\Phunctional\repeat;
 
 final class ConsumeRabbitMqDomainEventsCommand extends Command
 {
@@ -35,7 +35,7 @@ final class ConsumeRabbitMqDomainEventsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $queueName       = (string) $input->getArgument('queue');
+        $queueName = (string) $input->getArgument('queue');
         $eventsToProcess = (int) $input->getArgument('quantity');
 
         repeat($this->consumer($queueName), $eventsToProcess);

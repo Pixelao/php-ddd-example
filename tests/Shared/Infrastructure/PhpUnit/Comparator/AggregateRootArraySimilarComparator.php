@@ -6,11 +6,11 @@ namespace CodelyTv\Tests\Shared\Infrastructure\PhpUnit\Comparator;
 
 use CodelyTv\Shared\Domain\Aggregate\AggregateRoot;
 use CodelyTv\Tests\Shared\Domain\TestUtils;
-use SebastianBergmann\Comparator\Comparator;
-use SebastianBergmann\Comparator\ComparisonFailure;
 use function Lambdish\Phunctional\all;
 use function Lambdish\Phunctional\any;
 use function Lambdish\Phunctional\instance_of;
+use SebastianBergmann\Comparator\Comparator;
+use SebastianBergmann\Comparator\ComparisonFailure;
 
 final class AggregateRootArraySimilarComparator extends Comparator
 {
@@ -38,8 +38,8 @@ final class AggregateRootArraySimilarComparator extends Comparator
 
     private function contains(array $expectedArray, array $actualArray): bool
     {
-        $exists = fn(AggregateRoot $expected) => any(
-            fn(AggregateRoot $actual) => TestUtils::isSimilar($expected, $actual),
+        $exists = fn (AggregateRoot $expected) => any(
+            fn (AggregateRoot $actual) => TestUtils::isSimilar($expected, $actual),
             $actualArray
         );
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace CodelyTv\Gestibarymont\Users\Application\Update;
 
+use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Gestibarymont\Users\Application\Find\UserFinder;
 use CodelyTv\Gestibarymont\Users\Domain\UserName;
 use CodelyTv\Gestibarymont\Users\Domain\UserRepository;
-use CodelyTv\Gestibarymont\Shared\Domain\Users\UserId;
 use CodelyTv\Shared\Domain\Bus\Event\EventBus;
 
 final class UserRenamer
